@@ -1,8 +1,9 @@
 <template>
-    <div>
-        <span v-if="editingCell!=$vnode.key" @click="editCell">{{data}}</span>
-        <input v-else type="text" :value="data" :placeholder="data">
-    </div>
+        <!--
+            <span v-if="editingCell!=$vnode.key" @click="editCell">{{data}}</span>
+            <input v-else type="text" :value="data" :placeholder="data">
+        -->
+        <input type="text" :value="data" :placeholder="data" :size="chunkSize" class="chunkCell">
 </template>
 
 <script>
@@ -15,24 +16,39 @@ export default {
     },
     data: function() {
         return {
-            
+
         } 
     },
     computed: {
         ...mapState([
-            'editingCell'
+            //'editingCell'
+            'chunkSize'
         ])
     },
     methods: {
         ...mapMutations([
-          'changeEditing'
+          //'changeEditing'
         ]),
-        editCell() {
+        /*editCell() {
             this.changeEditing( this.$vnode.key );
-        }
+        }*/
     }
 }
 </script>
 
 <style scoped>
+.chunkCell {
+    border: solid 1px red;
+    outline: none;
+    float: left;
+    width: 2em;
+    padding: 0px;
+    text-align: center;
+}
+.chunkCell:hover {
+    border: solid 1px lightgray;
+}
+.chunkCell:focus {
+    border: solid 1px darkslategray;
+}
 </style>

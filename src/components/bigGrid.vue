@@ -22,13 +22,13 @@ export default {
         ...mapState([
             'fileArray',
             'fileIndex',
-            'blockSize'
+            'chunkSize'
         ])
     },
     methods: {
         ...mapMutations([
             'changeFileIndex',
-            'changeBlockSize'
+            'changeChunkSize'
         ]),
         //Use for, not forEach/maps/filter
         //Use arr[i], not .push()
@@ -37,7 +37,7 @@ export default {
         //See why at https://jsperf.com/string-chopping-comparison
         chopString() {
             let _str = this.fileArray[this.fileIndex];
-            let _size = this.blockSize;
+            let _size = this.chunkSize;
 
             let nChunks   = Math.ceil(_str.length / _size),
                 chunks      = new Array(nChunks);

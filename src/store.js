@@ -6,19 +6,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     editingCell: null,
-    fileArray: ["QWERTY","ABCDE"],
+    fileArray: ["1234567890ABCDEF1234567890ABCDEF1234567890ABCDEF","ABCDEFGHIJKLMNOPQRSTUVZ","QWERTYUIOPASDFGHJKL"],
     fileIndex: 0,
-    blockSize: 2,
+    chunkSize: 2,
   },
   mutations: {
     changeEditing (state, payload) {
-      state.editingCell = payload;
+      state.editingCell = parseInt(payload);
     },
     changeFileIndex (state, payload) {
-      state.fileIndex = payload;
+      state.fileIndex = parseInt(payload);
     },
-    changeBlockSize (state, payload) {
-      state.blockSize = payload;
+    changeChunkSize (state, payload) {
+      state.chunkSize = parseInt(payload);
     },
   },
   actions: {
