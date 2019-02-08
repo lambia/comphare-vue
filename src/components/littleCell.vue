@@ -1,11 +1,13 @@
 <template>
     <div>
-        <span v-if="!editing" @click="toggleEditing">{{data}}</span>
-        <input v-else @click="toggleEditing" type="text" name="" id="" class="" :value="data" placeholder="">
+        <span v-if="editingCell!=$vnode.key" @click="editCell">{{data}}</span>
+        <input v-else type="text" name="" id="" class="" :value="data" placeholder="">
     </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
     name: 'littleCell',
     props: {
@@ -17,10 +19,17 @@ export default {
             arrayTest: []
         } 
     },
+    computed: {
+        ...mapState([
+            'editingCell'
+        ])
+    },
     methods: {
-        toggleEditing() {
-            //ToDo: editing deve essere del padre/store e indicare l'ID del figlio in edit
-            this.editing = !this.editing;
+        ...mapMutations([
+          'changeEditing'
+        ]),
+        editCell() {
+            this.changeEditing( this.$vnode.key );
         }
     }
 }

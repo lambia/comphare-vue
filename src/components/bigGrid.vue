@@ -6,6 +6,7 @@
 
 <script>
 import littleCell from '@/components/littleCell.vue'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     name: 'bigGrid',
@@ -13,7 +14,7 @@ export default {
         littleCell
     },
     props: {
-        payload: String,
+        payload: Array, //of Strings
         blockSize: Number,
         index: Number
     },
@@ -22,7 +23,15 @@ export default {
           
         }
     },
+    computed: {
+        ...mapState([
+            'editingCell'
+        ])
+    },
     methods: {
+        ...mapMutations([
+          'changeEditing'
+        ]),
         //Use for, not forEach/maps/filter
         //Use arr[i], not .push()
         //Use substr, not anything else

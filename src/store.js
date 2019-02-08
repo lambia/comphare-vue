@@ -5,12 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    editingCell: null,
   },
   mutations: {
-
+    changeEditing (state, payload) {
+      state.editingCell = payload;
+    },
   },
   actions: {
-
+    
   }
 })
