@@ -1,7 +1,6 @@
 <template>
     <div>
-        <span>{{n}}</span>
-        <little-cell v-for="(value,key) in chopString(stringTest[currentFile], blockSize)" :key="key" :data="value" />
+        <little-cell v-for="(value,key) in chopString()" :key="key" :data="value" />
     </div>
 </template>
 
@@ -14,13 +13,13 @@ export default {
         littleCell
     },
     props: {
-        n: Number
+        payload: String,
+        blockSize: Number,
+        index: Number
     },
     data: function() {
         return {
-            stringTest: ["QWERTY","ABCDE"],
-            currentFile: 0,
-            blockSize: 2
+          
         }
     },
     methods: {
@@ -29,12 +28,15 @@ export default {
         //Use substr, not anything else
         //Old fashioned is better.
         //See why at https://jsperf.com/string-chopping-comparison
-        chopString(str, blockSize) {
-            var numChunks = Math.ceil(str.length / blockSize),
-                chunks = new Array(numChunks);
+        chopString() {
+            let _str = this.payload[this.index];
+            let _size = this.blockSize;
 
-            for(var i = 0, o = 0; i < numChunks; ++i, o += blockSize) {
-                chunks[i] = str.substr(o, blockSize);
+            let nChunks   = Math.ceil(_str.length / _size),
+                chunks      = new Array(nChunks);
+
+            for(let i = 0, o = 0; i < nChunks; ++i, o += _size) {
+                chunks[i] = _str.substr(o, _size);
             }
 
             return chunks;
