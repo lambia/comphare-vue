@@ -3,7 +3,7 @@
             <span v-if="editingCell!=$vnode.key" @click="editCell">{{data}}</span>
             <input v-else type="text" :value="data" :placeholder="data">
         -->
-        <input type="text" :value="data" :placeholder="data" :size="chunkSize" class="chunkCell">
+        <input type="text" :value="data" :placeholder="data" :size="chunkSize" :style="getInputStyle" @input="onEdit" class="chunkCell">
 </template>
 
 <script>
@@ -29,6 +29,12 @@ export default {
         ...mapMutations([
           //'changeEditing'
         ]),
+        getInputStyle() {
+            return { width: this.chunkSize+"em" };
+        },
+        onEdit() {
+            
+        }
         /*editCell() {
             this.changeEditing( this.$vnode.key );
         }*/
@@ -41,7 +47,6 @@ export default {
     border: solid 1px red;
     outline: none;
     float: left;
-    width: 2em;
     padding: 0px;
     text-align: center;
 }
