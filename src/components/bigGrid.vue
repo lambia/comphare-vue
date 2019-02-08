@@ -1,6 +1,6 @@
 <template>
     <div>
-        <little-cell v-for="(value,key) in chopString()" :key="key" :data="value" />
+        <little-cell v-for="(value,key) in getChunksNumber()" :key="key" />
     </div>
 </template>
 
@@ -48,6 +48,14 @@ export default {
 
             return chunks;
         },
+        getChunksNumber() {
+            let _str = this.fileArray[this.fileIndex];
+            let _size = this.chunkSize;
+
+            let nChunks   = Math.ceil(_str.length / _size);
+
+            return nChunks;
+        }
 
     }
 }
