@@ -13,11 +13,6 @@ export default {
     components: {
         littleCell
     },
-    props: {
-        payload: Array, //of Strings
-        blockSize: Number,
-        index: Number
-    },
     data: function() {
         return {
           
@@ -25,12 +20,15 @@ export default {
     },
     computed: {
         ...mapState([
-            'editingCell'
+            'fileArray',
+            'fileIndex',
+            'blockSize'
         ])
     },
     methods: {
         ...mapMutations([
-          'changeEditing'
+            'changeFileIndex',
+            'changeBlockSize'
         ]),
         //Use for, not forEach/maps/filter
         //Use arr[i], not .push()
@@ -38,7 +36,7 @@ export default {
         //Old fashioned is better.
         //See why at https://jsperf.com/string-chopping-comparison
         chopString() {
-            let _str = this.payload[this.index];
+            let _str = this.fileArray[this.fileIndex];
             let _size = this.blockSize;
 
             let nChunks   = Math.ceil(_str.length / _size),

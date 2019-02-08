@@ -1,7 +1,7 @@
 <template>
     <div>
         <span v-if="editingCell!=$vnode.key" @click="editCell">{{data}}</span>
-        <input v-else type="text" name="" id="" class="" :value="data" placeholder="">
+        <input v-else type="text" :value="data" :placeholder="data">
     </div>
 </template>
 
@@ -15,8 +15,7 @@ export default {
     },
     data: function() {
         return {
-            editing: false,
-            arrayTest: []
+            
         } 
     },
     computed: {

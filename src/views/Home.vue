@@ -1,6 +1,6 @@
 <template>
   <div>
-    <big-grid :payload="payload" :index="index" :blockSize="blockSize" />
+    <big-grid />
   </div>
 </template>
 
@@ -14,9 +14,7 @@ export default {
     },
     data: function() {
         return {
-            payload: ["QWERTY","ABCDE"],
-            index: 0,
-            blockSize: 3
+          
         }
     }
 }
