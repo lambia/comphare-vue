@@ -1,6 +1,6 @@
 <template>
   <div>
-    <bigGrid :n="23" />
+    <big-grid :n="23" />
   </div>
 </template>
 
